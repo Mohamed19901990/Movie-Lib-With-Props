@@ -3,22 +3,17 @@
 import "@fontsource/roboto/700.css";
 import { Container } from "@mui/material";
 import Box from "@mui/material/Box";
-import { useState } from "react";
+import Copyright from "./Components/Copyright";
 import MovieFilter from "./Components/MovieFilter";
 import MovieInput from "./Components/MovieInput";
 import MovieShow from "./Components/MovieShow";
 
 function App() {
-  const [movies, setMovies]: any = useState([]);
-  const [moviesFiltred, setMoviesFiltred]: any = useState([]);
-  const [toggleMovie, setToggleMovie]: any = useState(false);
-
-  const setMovieArray = (moovies: any) => {
-    setMovies([...movies, moovies]);
-  };
-
   console.log("hello from APP");
-  console.log(movies);
+  // const { movies, moviesFiltred, setMoviesFiltred, setMovies } = useMovies();
+
+  // const {test} = useMovies();
+  // console.log(movies);
 
   return (
     <Container sx={{ height: "100%", backgroundColor: "#d6f3f6aa" }}>
@@ -35,21 +30,12 @@ function App() {
 
       <Box sx={{ display: "flex", height: "1000px" }} mt={1}>
         <Box sx={{ mt: 8 }}>
-          <MovieInput setMovieArray={setMovieArray} />
-          <MovieFilter
-            setMoviesFiltred={setMoviesFiltred}
-            setToggleMovie={setToggleMovie}
-            movies={movies}
-          />
+          <MovieInput />
+          <MovieFilter />
         </Box>
-        <MovieShow
-          setMoviesFiltred={setMoviesFiltred}
-          setMovies={setMovies}
-          movies={movies}
-          moviesFiltred={moviesFiltred}
-          toggleMovie={toggleMovie}
-        />
+        <MovieShow />
       </Box>
+      <Copyright />
     </Container>
   );
 }

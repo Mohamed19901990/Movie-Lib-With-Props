@@ -2,55 +2,11 @@
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import { useState } from "react";
+import useMovies from "./useMovies";
 
-function MovieInput({ setMovieArray }: any) {
-  const [moviesShow, setMoviesShow]: any = useState([]);
+function MovieInput() {
+  const { submitHandler } = useMovies();
 
-  /////////////////  SUBMIT NEW MOVIE  ///////////////////////
-  const submitHandler = (e: any) => {
-    e.preventDefault();
-    console.log("SubmitHandler");
-
-    //////// IF FORM EMPTY PROMPT ALERT ////////
-    if (
-      e.target.title.value === "" ||
-      e.target.description.value === "" ||
-      e.target.posterURL.value === "" ||
-      e.target.rating.value === ""
-    ) {
-      window.confirm("Please Fill All The Fields To Add Your Movie");
-      e.target.title.value = "";
-      e.target.rating.value = "";
-      e.target.description.value = "";
-      e.target.posterURL.value = "";
-    } //// IF NOT, THEN FETCH DATA /////
-    else {
-      setMoviesShow([
-        ...moviesShow,
-        {
-          title: e.target.title.value,
-          description: e.target.description.value,
-          posterURL: e.target.posterURL.value,
-          rating: e.target.rating.value,
-          id: Math.random().toFixed(3),
-        },
-      ]);
-      setMovieArray({
-        title: e.target.title.value,
-        description: e.target.description.value,
-        posterURL: e.target.posterURL.value,
-        rating: e.target.rating.value,
-        id: Math.random().toFixed(3),
-      });
-      e.target.title.value = "";
-      e.target.description.value = "";
-      e.target.posterURL.value = "";
-      e.target.rating.value = "";
-    }
-  };
-
-  /////////////////////  REMOVE  //////////////////////////
   return (
     <Box sx={{ width: 180 }}>
       <form onSubmit={submitHandler} style={{ width: "150px" }}>

@@ -1,9 +1,9 @@
 /* Copyright (c) 2023 CLOUDPILOTS Software & Consulting GmbH */
 
-import React from "react";
+import useMovies from "./useMovies";
 
-function MovieList({ movies }: any) {
-  const movieArray = [...movies];
+function MovieList() {
+  const { movieArray } = useMovies();
 
   return (
     <div>

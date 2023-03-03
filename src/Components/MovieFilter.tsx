@@ -1,40 +1,10 @@
 /* Copyright (c) 2023 CLOUDPILOTS Software & Consulting GmbH */
 
-import { useState } from "react";
-
 import Button from "@mui/material/Button";
+import useMovies from "./useMovies";
 
-function MovieFilter({ setMoviesFiltred, movies, setToggleMovie }: any) {
-  const [buttonDisabled, setButtonDisabled] = useState(false);
-
-  /////////////////////  Filter  /////////////////////////////
-  const filterHandler = (event: any) => {
-    event.preventDefault();
-    setButtonDisabled(true);
-    setToggleMovie(true);
-    setMoviesFiltred(
-      ...[
-        movies.filter(
-          (v: any) =>
-            v.title === event.target.title2.value ||
-            v.rating === event.target.rating2.value ||
-            (event.target.rating2.value === "" &&
-              event.target.title2.value === "")
-        ),
-      ]
-    );
-
-    event.target.rating2.value = "";
-    event.target.title2.value = "";
-  };
-
-  /////////////////////  CLEAR FILTER //////////////////////////
-  const clearHandler = (event: any) => {
-    event.preventDefault();
-    // MovieFilterArray(originalMovies);
-    setButtonDisabled(false);
-    setToggleMovie(false);
-  };
+function MovieFilter() {
+  const { filterHandler, buttonDisabled, clearHandler } = useMovies();
 
   return (
     <div style={{ display: "flex", maxWidth: "100%" }}>

@@ -4,25 +4,10 @@ import { Box, Button, Card } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
+import useMovies from "./useMovies";
 
-const MovieShow = ({
-  setMoviesFiltred,
-  setMovies,
-  movies,
-  toggleMovie,
-  moviesFiltred,
-}: any) => {
-  const remove = (e: any) => {
-    console.log("Hallo from remove up");
-    setMovies([...movies.filter((movies: any) => movies.id !== e.target.id)]);
-    console.log("Hallo from remove between");
-    setMoviesFiltred([
-      ...moviesFiltred.filter(
-        (moviesFiltred: any) => moviesFiltred.id !== e.target.id
-      ),
-    ]);
-    console.log("Hallo from remove down", moviesFiltred);
-  };
+const MovieShow = () => {
+  const { toggleMovie, remove, test, movies, moviesFiltred } = useMovies();
 
   if (toggleMovie === true)
     return (
@@ -147,6 +132,7 @@ const MovieShow = ({
         justifyContent: "space-between",
       }}
     >
+      {test}
       <Box
         style={{
           width: "100%",

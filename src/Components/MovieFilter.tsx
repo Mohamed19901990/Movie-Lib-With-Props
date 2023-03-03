@@ -23,9 +23,7 @@ function MovieFilter({ setMoviesFiltred, movies, setToggleMovie }: any) {
         ),
       ]
     );
-    // MovieFilterArray(...[movies.filter((v:any)=>(
-    //     (v.title===event.target.title2.value || v.rating===event.target.rating2.value || (event.target.rating2.value==='' && event.target.title2.value==='')))
-    //     )])
+
     event.target.rating2.value = "";
     event.target.title2.value = "";
   };

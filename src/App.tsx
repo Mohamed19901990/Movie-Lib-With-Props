@@ -42,16 +42,6 @@ function App() {
             movies={movies}
           />
         </Box>
-
-        {/* <Box
-          sx={{
-            : "lightgreen",
-            width: "100%",
-            display: "flex",
-            alignItems: "row",
-            justifyContent: "space-around",
-          }}
-        > */}
         <MovieShow
           setMoviesFiltred={setMoviesFiltred}
           setMovies={setMovies}
@@ -59,7 +49,6 @@ function App() {
           moviesFiltred={moviesFiltred}
           toggleMovie={toggleMovie}
         />
-        {/* </Box> */}
       </Box>
     </Container>
   );

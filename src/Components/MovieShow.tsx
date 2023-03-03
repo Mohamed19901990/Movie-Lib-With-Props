@@ -4,11 +4,14 @@ import { Box, Button, Card } from "@mui/material";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
-import useMovies from "./useMovies";
 
-const MovieShow = () => {
-  const { toggleMovie, remove, test, movies, moviesFiltred } = useMovies();
-
+const MovieShow = ({
+  movies,
+  test,
+  toggleMovie,
+  moviesFiltred,
+  onRemove,
+}: any) => {
   if (toggleMovie === true)
     return (
       <Box
@@ -74,7 +77,7 @@ const MovieShow = () => {
                     <Button
                       variant="contained"
                       id={value.id}
-                      onClick={remove}
+                      onClick={onRemove}
                       size="small"
                       sx={{
                         height: "26px",
@@ -188,7 +191,7 @@ const MovieShow = () => {
                   <Button
                     variant="contained"
                     id={value.id}
-                    onClick={remove}
+                    onClick={onRemove}
                     size="small"
                     sx={{
                       height: "26px",

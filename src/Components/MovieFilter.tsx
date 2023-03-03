@@ -1,15 +1,12 @@
 /* Copyright (c) 2023 CLOUDPILOTS Software & Consulting GmbH */
 
 import Button from "@mui/material/Button";
-import useMovies from "./useMovies";
 
-function MovieFilter() {
-  const { filterHandler, buttonDisabled, clearHandler } = useMovies();
-
+function MovieFilter({ onSubmit, buttonDisabled, onClick }: any) {
   return (
     <div style={{ display: "flex", maxWidth: "100%" }}>
       <div>
-        <form onSubmit={filterHandler} style={{ width: "150px" }}>
+        <form onSubmit={onSubmit} style={{ width: "150px" }}>
           <input type="text" name="title2" placeholder="Film title" />
           <input type="text" name="rating2" placeholder="Film rating" />
           <Button
@@ -36,7 +33,7 @@ function MovieFilter() {
             height: 25,
           }}
           disabled={!buttonDisabled}
-          onClick={clearHandler}
+          onClick={onClick}
           variant="contained"
           type="button"
           size="small"

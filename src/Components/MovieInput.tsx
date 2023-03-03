@@ -2,16 +2,12 @@
 
 import Box from "@mui/material/Box";
 import Button from "@mui/material/Button";
-import useMovies from "./useMovies";
 
-function MovieInput() {
-  const { submitHandler } = useMovies();
-
+function MovieInput({ onSubmit }: any) {
   return (
     <Box sx={{ width: 180 }}>
-      <form onSubmit={submitHandler} style={{ width: "150px" }}>
+      <form onSubmit={onSubmit} style={{ width: "150px" }}>
         <input type="text" name="title" placeholder="Film title" />
-
         <input type="text" name="description" placeholder="Film description" />
         <input type="text" name="posterURL" placeholder="Film URL" />
         <input type="text" name="rating" placeholder="Film rating" />

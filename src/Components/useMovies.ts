@@ -99,6 +99,7 @@ const useMovies = () => {
       e.target.rating.value = "";
     }
   };
+  console.log(movies, 'useMovies');
 
   return {
     remove,

@@ -1,13 +1,13 @@
 /* Copyright (c) 2023 CLOUDPILOTS Software & Consulting GmbH */
 
-import { useState } from "react";
+import { useState } from 'react';
 
 const useMovies = () => {
   const [movies, setMovies]: any = useState([]);
   const [moviesFiltred, setMoviesFiltred]: any = useState([]);
   const [toggleMovie, setToggleMovie]: any = useState(false);
   const [buttonDisabled, setButtonDisabled] = useState(false);
-  const test = "data test";
+  const test = 'data test';
   const [moviesShow, setMoviesShow]: any = useState([]);
   const movieArray = [...movies];
 
@@ -17,15 +17,15 @@ const useMovies = () => {
 
   /////////////////////  REMOVE  //////////////////////////
   const remove = (e: any) => {
-    console.log("Hallo from remove up");
+    console.log('Hallo from remove up');
     setMovies([...movies.filter((movies: any) => movies.id !== e.target.id)]);
-    console.log("Hallo from remove between");
+    console.log('Hallo from remove between');
     setMoviesFiltred([
       ...moviesFiltred.filter(
-        (moviesFiltred: any) => moviesFiltred.id !== e.target.id
+        (moviesFiltred: any) => moviesFiltred.id !== e.target.id,
       ),
     ]);
-    console.log("Hallo from remove down", moviesFiltred);
+    console.log('Hallo from remove down', moviesFiltred);
   };
 
   /////////////////////  CLEAR FILTER //////////////////////////
@@ -47,33 +47,33 @@ const useMovies = () => {
           (v: any) =>
             v.title === event.target.title2.value ||
             v.rating === event.target.rating2.value ||
-            (event.target.rating2.value === "" &&
-              event.target.title2.value === "")
+            (event.target.rating2.value === '' &&
+              event.target.title2.value === ''),
         ),
-      ]
+      ],
     );
 
-    event.target.rating2.value = "";
-    event.target.title2.value = "";
+    event.target.rating2.value = '';
+    event.target.title2.value = '';
   };
 
   /////////////////  SUBMIT NEW MOVIE  ///////////////////////
   const submitHandler = (e: any) => {
     e.preventDefault();
-    console.log("SubmitHandler");
+    console.log('SubmitHandler');
 
     //////// IF FORM EMPTY PROMPT ALERT ////////
     if (
-      e.target.title.value === "" ||
-      e.target.description.value === "" ||
-      e.target.posterURL.value === "" ||
-      e.target.rating.value === ""
+      e.target.title.value === '' ||
+      e.target.description.value === '' ||
+      e.target.posterURL.value === '' ||
+      e.target.rating.value === ''
     ) {
-      window.confirm("Please Fill All The Fields To Add Your Movie");
-      e.target.title.value = "";
-      e.target.rating.value = "";
-      e.target.description.value = "";
-      e.target.posterURL.value = "";
+      window.confirm('Please Fill All The Fields To Add Your Movie');
+      e.target.title.value = '';
+      e.target.rating.value = '';
+      e.target.description.value = '';
+      e.target.posterURL.value = '';
     } //// IF NOT, THEN FETCH DATA /////
     else {
       setMoviesShow([
@@ -93,12 +93,13 @@ const useMovies = () => {
         rating: e.target.rating.value,
         id: Math.random().toFixed(3),
       });
-      e.target.title.value = "";
-      e.target.description.value = "";
-      e.target.posterURL.value = "";
-      e.target.rating.value = "";
+      e.target.title.value = '';
+      e.target.description.value = '';
+      e.target.posterURL.value = '';
+      e.target.rating.value = '';
     }
   };
+
   console.log(movies, 'useMovies');
 
   return {

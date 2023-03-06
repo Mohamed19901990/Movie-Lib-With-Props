@@ -1,44 +1,41 @@
 /* Copyright (c) 2023 CLOUDPILOTS Software & Consulting GmbH */
 
-import { Box, Button, Card } from "@mui/material";
-import CardActions from "@mui/material/CardActions";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
+import { Box, Button, Card } from '@mui/material';
+import { useContext } from 'react';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import { moviesContext } from '../App';
 
-const MovieShow = ({
-  movies,
-  test,
-  toggleMovie,
-  moviesFiltred,
-  onRemove,
-}: any) => {
+const MovieShow = ({ toggleMovie, moviesFiltred, onRemove }: any) => {
+  const movies = useContext(moviesContext);
   if (toggleMovie === true)
     return (
       <Box
         style={{
-          display: "flex",
-          width: "100%",
-          flexDirection: "row",
-          justifyContent: "space-between",
+          display: 'flex',
+          width: '100%',
+          flexDirection: 'row',
+          justifyContent: 'space-between',
         }}
       >
         <Box
           style={{
-            width: "100%",
+            width: '100%',
           }}
         >
           <Box
             sx={{
-              justifyContent: "center",
-              display: "02marflex",
+              justifyContent: 'center',
+              display: '02marflex',
             }}
           >
             MovieCard List
           </Box>
           <Box
             sx={{
-              display: "flex",
-              flexWrap: "wrap",
+              display: 'flex',
+              flexWrap: 'wrap',
               mt: 4.5,
             }}
           >
@@ -51,37 +48,37 @@ const MovieShow = ({
                     mb: 0.5,
                     mt: 0.5,
                     mr: 0.5,
-                    backgroundColor: "black",
-                    color: "white",
-                    borderRadius: "5%",
+                    backgroundColor: 'black',
+                    color: 'white',
+                    borderRadius: '5%',
                   }}
-                  variant="outlined"
+                  variant='outlined'
                 >
                   <CardContent>
-                    <Typography sx={{ mb: 1 }} variant="body2">
+                    <Typography sx={{ mb: 1 }} variant='body2'>
                       Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                       &nbsp;{value.title}
                     </Typography>
-                    <Typography sx={{ mb: 1 }} variant="body2">
+                    <Typography sx={{ mb: 1 }} variant='body2'>
                       Description &nbsp;:&nbsp;&nbsp;{value.description}
                     </Typography>
-                    <Typography sx={{ mb: 1 }} variant="body2">
+                    <Typography sx={{ mb: 1 }} variant='body2'>
                       PosterURL&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;{value.posterURL}
                     </Typography>
-                    <Typography variant="body2">
+                    <Typography variant='body2'>
                       Rating&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                       &nbsp;{value.rating}
                     </Typography>
                   </CardContent>
                   <CardActions>
                     <Button
-                      variant="contained"
+                      variant='contained'
                       id={value.id}
                       onClick={onRemove}
-                      size="small"
+                      size='small'
                       sx={{
-                        height: "26px",
-                        "&:hover": { backgroundColor: "#d33e3e8d" },
+                        'height': '26px',
+                        '&:hover': { backgroundColor: '#d33e3e8d' },
                       }}
                     >
                       Remove
@@ -94,28 +91,28 @@ const MovieShow = ({
         </Box>
         <Box
           style={{
-            justifyContent: "center",
+            justifyContent: 'center',
           }}
         >
           <Box
             style={{
-              justifyContent: "center",
-              alignItems: "flex-start",
-              display: "flex",
-              width: "100px",
+              justifyContent: 'center',
+              alignItems: 'flex-start',
+              display: 'flex',
+              width: '100px',
             }}
           >
             Movies List
           </Box>
           <Box
             sx={{
-              justifyContent: "center",
-              alignItems: "center",
-              display: "flex",
-              width: "100px",
-              flexDirection: "column",
+              justifyContent: 'center',
+              alignItems: 'center',
+              display: 'flex',
+              width: '100px',
+              flexDirection: 'column',
               mt: 5,
-              backgroundColor: "lightblue",
+              backgroundColor: 'lightblue',
             }}
           >
             {moviesFiltred.map((value: any) => (
@@ -129,30 +126,29 @@ const MovieShow = ({
   return (
     <Box
       style={{
-        display: "flex",
-        width: "100%",
-        flexDirection: "row",
-        justifyContent: "space-between",
+        display: 'flex',
+        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'space-between',
       }}
     >
-      {test}
       <Box
         style={{
-          width: "100%",
+          width: '100%',
         }}
       >
         <Box
           sx={{
-            justifyContent: "center",
-            display: "02marflex",
+            justifyContent: 'center',
+            display: '02marflex',
           }}
         >
           MovieCard List
         </Box>
         <Box
           sx={{
-            display: "flex",
-            flexWrap: "wrap",
+            display: 'flex',
+            flexWrap: 'wrap',
             mt: 4.5,
           }}
         >
@@ -165,37 +161,37 @@ const MovieShow = ({
                   mb: 0.5,
                   mt: 0.5,
                   mr: 0.5,
-                  backgroundColor: "black",
-                  color: "white",
-                  borderRadius: "5%",
+                  backgroundColor: 'black',
+                  color: 'white',
+                  borderRadius: '5%',
                 }}
-                variant="outlined"
+                variant='outlined'
               >
                 <CardContent>
-                  <Typography sx={{ mb: 1 }} variant="body2">
+                  <Typography sx={{ mb: 1 }} variant='body2'>
                     Title&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                     &nbsp;{value.title}
                   </Typography>
-                  <Typography sx={{ mb: 1 }} variant="body2">
+                  <Typography sx={{ mb: 1 }} variant='body2'>
                     Description &nbsp;:&nbsp;&nbsp;{value.description}
                   </Typography>
-                  <Typography sx={{ mb: 1 }} variant="body2">
+                  <Typography sx={{ mb: 1 }} variant='body2'>
                     PosterURL&nbsp;&nbsp;&nbsp;:&nbsp;&nbsp;{value.posterURL}
                   </Typography>
-                  <Typography variant="body2">
+                  <Typography variant='body2'>
                     Rating&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
                     &nbsp;{value.rating}
                   </Typography>
                 </CardContent>
                 <CardActions>
                   <Button
-                    variant="contained"
+                    variant='contained'
                     id={value.id}
                     onClick={onRemove}
-                    size="small"
+                    size='small'
                     sx={{
-                      height: "26px",
-                      "&:hover": { backgroundColor: "#d33e3e8d" },
+                      'height': '26px',
+                      '&:hover': { backgroundColor: '#d33e3e8d' },
                     }}
                   >
                     Remove
@@ -208,28 +204,28 @@ const MovieShow = ({
       </Box>
       <Box
         style={{
-          justifyContent: "center",
+          justifyContent: 'center',
         }}
       >
         <Box
           style={{
-            justifyContent: "center",
-            alignItems: "flex-start",
-            display: "flex",
-            width: "100px",
+            justifyContent: 'center',
+            alignItems: 'flex-start',
+            display: 'flex',
+            width: '100px',
           }}
         >
           Movies List
         </Box>
         <Box
           sx={{
-            justifyContent: "center",
-            alignItems: "center",
-            display: "flex",
-            width: "100px",
-            flexDirection: "column",
+            justifyContent: 'center',
+            alignItems: 'center',
+            display: 'flex',
+            width: '100px',
+            flexDirection: 'column',
             mt: 5,
-            backgroundColor: "lightblue",
+            backgroundColor: 'lightblue',
           }}
         >
           {movies.map((value: any) => (

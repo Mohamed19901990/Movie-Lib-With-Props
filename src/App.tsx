@@ -3,7 +3,7 @@
 import '@fontsource/roboto/700.css';
 import { Container } from '@mui/material';
 import Box from '@mui/material/Box';
-import { useEffect, createContext } from 'react';
+import { useEffect, createContext, useState } from 'react';
 import Copyright from './Components/Copyright';
 import MovieFilter from './Components/MovieFilter';
 import MovieInput from './Components/MovieInput';
@@ -11,6 +11,7 @@ import MovieShow from './Components/MovieShow';
 import useMovies from './Components/useMovies';
 
 export const moviesContext = createContext([]);
+export const moviesFiltredContext = createContext([]);
 
 function App() {
   console.log('hello from APP');
@@ -23,11 +24,29 @@ function App() {
     filterHandler,
     buttonDisabled,
     clearHandler,
+    oooo,
   } = useMovies();
+
+  const [onload, setOnload] = useState(false);
 
   useEffect(() => {
     console.log(movies, 'from app');
+    // window.addEventListener('load', oooo);
+
+    // return () => {
+    //   console.log('unmount');
+    //   window.removeEventListener('load', oooo);
+    // };
   }, [movies]);
+
+  window.onload = () => {
+    console.log('ONLOAD');
+    setOnload(!onload);
+    console.log(onload, ' onload from App ');
+    oooo();
+  };
+
+  console.log(movies, 'from app 22');
 
   return (
     <Container sx={{ height: '100%', backgroundColor: '#d6f3f6aa' }}>
@@ -52,11 +71,13 @@ function App() {
           />
         </Box>
         <moviesContext.Provider value={movies}>
-          <MovieShow
-            toggleMovie={toggleMovie}
-            onRemove={remove}
-            moviesFiltred={moviesFiltred}
-          />
+          <moviesFiltredContext.Provider value={movies}>
+            <MovieShow
+              toggleMovie={toggleMovie}
+              onRemove={remove}
+              // onload={onload}
+            />
+          </moviesFiltredContext.Provider>
         </moviesContext.Provider>
       </Box>
       <Copyright />

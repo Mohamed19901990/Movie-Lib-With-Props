@@ -1,0 +1,9 @@
+/.git
+/.next
+/coverage
+/tmp
+@components/
+@types/
+node_modules
+*.test.tsx
+*.stories.tsx

@@ -13,8 +13,12 @@ import MovieShow from './Components/MovieShow';
 import useMovies from './Components/useMovies';
 import firebase from './firebase';
 import { getAuth, GoogleAuthProvider, signInWithPopup } from 'firebase/auth';
-import GoogleLoginButton from './Components/ButtonG';
-import { GoogleAuthenticationProvider } from '@cpl/google-identity';
+import GoogleLoginButton from './Components/button';
+// import GoogleLoginButton from './Components/ButtonG';
+import {
+  GoogleAuthenticationProvider,
+  GoogleIdentityServices,
+} from '@cpl/google-identity';
 
 export const moviesContext = createContext([]);
 export const moviesFiltredContext = createContext([]);
@@ -28,10 +32,10 @@ const GoogleLogin = () => {
         '544306654076-jd6f8ubn4bdau9pmujqbum23pprh9r4a.apps.googleusercontent.com',
     });
     google.accounts.id.renderButton(document.getElementById('test') as any, {
-      // size: 'large',
-      // theme: 'filled_black',
-      // type: 'icon',
-      // shape: 'pill',
+      size: 'large',
+      theme: 'filled_black',
+      type: 'icon',
+      shape: 'pill',
       click_listener: onClickHandler,
     });
 
@@ -92,7 +96,8 @@ function App() {
         }}
       >
         <Box>MOFLIX : Welcome To Your Movie Library&nbsp;&nbsp;&nbsp;</Box>
-        {/* <Box
+
+        <Box
           sx={{
             display: 'inline-row',
             justifyContent: 'center',
@@ -101,22 +106,12 @@ function App() {
           mt={1}
           ml={50}
         >
-          <GoogleLoginButton />
-          <Box
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-            mt={1}
-          >
-            <GoogleLogin /> */}
+          <GoogleIdentityServices>
             <GoogleAuthenticationProvider clientId='544306654076-jd6f8ubn4bdau9pmujqbum23pprh9r4a.apps.googleusercontent.com'>
               <GoogleLoginButton />
             </GoogleAuthenticationProvider>
-          {/* </Box> */}
-        {/* </Box> */}
-        {/* <Button variant='contained'>Please LogIn</Button> */}
+          </GoogleIdentityServices>
+        </Box>
       </Box>
       <Box sx={{ display: 'flex', height: '1000px' }} mt={1}>
         <Box sx={{ mt: 8 }}>

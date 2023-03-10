@@ -23,44 +23,6 @@ import {
 export const moviesContext = createContext([]);
 export const moviesFiltredContext = createContext([]);
 
-const GoogleLogin = () => {
-  useEffect(() => {
-    // oooo();
-
-    google.accounts.id.initialize({
-      client_id:
-        '544306654076-jd6f8ubn4bdau9pmujqbum23pprh9r4a.apps.googleusercontent.com',
-    });
-    google.accounts.id.renderButton(document.getElementById('test') as any, {
-      size: 'large',
-      theme: 'filled_black',
-      type: 'icon',
-      shape: 'pill',
-      click_listener: onClickHandler,
-    });
-
-    function onClickHandler() {
-      console.log('Sign in with Google button clicked...');
-    }
-  }, []);
-
-  return <div id='test' />;
-};
-
-// const GoogleLogin = () => {
-//   const hallo = google.accounts.id.renderButton(
-//     document.getElementById('test') as any,
-//     {
-//       theme: 'outline',
-//       size: 'large',
-//       text: 'continue_with',
-//       type: 'standard',
-//     },
-//   );
-
-//   return <div id='test' />;
-// };
-
 function App() {
   const {
     movies,
@@ -71,18 +33,11 @@ function App() {
     clearHandler,
     oooo,
   } = useMovies();
-  // const auth = getAuth();
 
-  // const googleLogin = () => {
-  //   console.log('Hello from Button');
-  //   const provider = new GoogleAuthProvider();
-  //   signInWithPopup(auth, provider)
-  //     .then((result) => {
-  //       const user = result.user;
-  //       console.log(user, '======= USER ======');
-  //     })
-  //     .catch(console.log);
-  // };
+  window.onload = () => {
+    oooo();
+  };
+
   console.log(movies, 'from app');
 
   return (

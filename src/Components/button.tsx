@@ -1,33 +1,23 @@
 /* Copyright (c) 2023 CLOUDPILOTS Software & Consulting GmbH */
 
-import { useEffect } from 'react';
+import { FC, useEffect } from 'react';
+import { useGoogleAuthentication } from '@cpl/google-identity';
+import { GOOGLE_LOGIN_BUTTON_ID } from '@cpl/google-identity/build/@components/esm/google/authentication/login';
 
 export interface GoogleLoginButtonProps {
   buttonId?: string;
 }
 
-// type Fun = <T>(props: T) => 'test';
-
-const GoogleLoginButton = () => {
-  // const authentication = useGoogleAuthentication();
+const GoogleLoginButton: FC<GoogleLoginButtonProps> = ({ buttonId }) => {
+  const authentication = useGoogleAuthentication();
 
   useEffect(() => {
-  // window.setTimeout(() => {
-  // authentication.renderLoginButton(buttonId || GOOGLE_LOGIN_BUTTON_ID, {
-  //   size: 'large',
-  // });
-  google.accounts.id.renderButton(document.getElementById('test') as any, {
-    size: 'large',
-    theme: 'filled_blue',
-    type: 'standard',
-    shape: 'pill',
-    logo_alignment: 'left',
-    text: 'signup_with',
-  });
-  // }, 3);
-  }, []);
+    window.setTimeout(() => {
+      authentication.renderLoginButton(buttonId || GOOGLE_LOGIN_BUTTON_ID);
+    }, 10);
+  }, [buttonId, authentication, authentication.renderLoginButton]);
 
-  return <div id='test' />;
+  return <div id={buttonId || GOOGLE_LOGIN_BUTTON_ID} />;
 };
 
 export { GoogleLoginButton as default };

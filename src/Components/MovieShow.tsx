@@ -9,6 +9,11 @@ import { moviesContext } from '../App';
 
 const MovieShow = ({ onRemove }: any) => {
   const movies = useContext(moviesContext);
+  const images = {
+    url: 'https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg',
+    title: 'Snorkeling',
+    width: '40%',
+  };
 
   return (
     ///////////////////////// Show my Movie List ////////////////////////////
@@ -53,6 +58,7 @@ const MovieShow = ({ onRemove }: any) => {
                   backgroundColor: 'black',
                   color: 'white',
                   borderRadius: '5%',
+                  backgroundImage: `url(${images.url})`,
                 }}
                 variant='outlined'
               >
